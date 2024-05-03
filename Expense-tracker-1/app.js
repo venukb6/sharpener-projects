@@ -3,9 +3,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const amount = document.getElementById('amount')
     const desc = document.getElementById('description')
     const category = document.getElementById('category')
-    const ul = document.getElementById('ul')
-    const ulc = document.getElementsByClassName('expenseUl')
-    console.log(ulc)
+    const ul = document.querySelector('.expenseUl')
 
     form.addEventListener('submit',(event)=>{
         event.preventDefault()
@@ -24,14 +22,37 @@ document.addEventListener('DOMContentLoaded',()=>{
         localStorage.setItem(descVal, detailsReady)
 
         const newLi = document.createElement('li')
-        newLi.innerHTML = `${amountVal} - ${descVal} - ${categoryVal} <button id="dlt">Delete Expense</button>  <button id="edt">Edit Expense</button>`
+        newLi.innerHTML = `${amountVal} - ${descVal} - ${categoryVal} <button class="dlt">Delete Expense</button>  <button class="edt">Edit Expense</button>`
         newLi.className = "list-group-item"
         
-        ulc.appendChild(newLi)
+        ul.appendChild(newLi)
+        amount.value = ''
+        desc.value = ''
+        category.value = 'Food'
 
-        
+    })
 
+    
 
+    ul.addEventListener('click', (event)=>{
+        const text = event.target.parentElement.textContent
+        const textArr = text.split('-').map((item)=> item.trim())
+        const storageKey = textArr[1]
+        if(event.target.classList.contains('dlt')){
+            const listToDlt = event.target.parentElement
+            ul.removeChild(listToDlt)
+            localStorage.removeItem(storageKey)
+            
+        }
+        else if(event.target.classList.contains('edt')){
+            const listToDlt = event.target.parentElement
+            ul.removeChild(listToDlt)
+            localStorage.removeItem(storageKey)
+
+            amount.value = textArr[0]
+            desc.value = textArr[1]
+            category.value = textArr[2].split(' ')[0]
+        }
     })
 
 
