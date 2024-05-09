@@ -5,6 +5,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     const category = document.getElementById('category')
     const ul = document.querySelector('.expenseUl')
 
+    function displayUserOnScreen(details){
+        const newLi = document.createElement('li')
+        newLi.innerHTML = `${details.amtV} - ${details.desV} - ${details.catV} <button class="dlt">Delete Expense</button>  <button class="edt">Edit Expense</button>`
+        newLi.className = "list-group-item"
+        
+        ul.appendChild(newLi)
+    }
+
     form.addEventListener('submit',(event)=>{
         event.preventDefault()
         const amountVal = amount.value 
@@ -21,11 +29,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         localStorage.setItem(descVal, detailsReady)
 
-        const newLi = document.createElement('li')
-        newLi.innerHTML = `${amountVal} - ${descVal} - ${categoryVal} <button class="dlt">Delete Expense</button>  <button class="edt">Edit Expense</button>`
-        newLi.className = "list-group-item"
+        displayUserOnScreen(details)
         
-        ul.appendChild(newLi)
         amount.value = ''
         desc.value = ''
         category.value = 'Food'
