@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             .then((response)=> console.log(response))
             .catch((err)=> console.log(err))
 
-            const ratingVal = textArr[1]
+            const ratingVal = textArr[1].split(' ')[0]
             totalRatingCount[`star${ratingVal}`]--
             updateOverallRatings(totalRatingCount)
 
