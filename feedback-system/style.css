@@ -1,0 +1,19 @@
+body{
+    padding: 10px;
+}
+
+h1{
+    text-align: center;
+}
+
+li{
+    padding: 5px;
+}
+
+#dlt{
+    margin: 5px;
+}
+
+#edit{
+    margin: 5px;
+}
