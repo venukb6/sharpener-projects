@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const fourStarCount = document.querySelector('.four-star')
     const fiveStarCount = document.querySelector('.five-star')
 
-    function updateOverallRatings(counts) {
-        oneStarCount.textContent = counts.star1;
-        twoStarCount.textContent = counts.star2;
-        threeStarCount.textContent = counts.star3;
-        fourStarCount.textContent = counts.star4;
-        fiveStarCount.textContent = counts.star5;
+    function updateOverallRatings(totalRatingCount) {
+        oneStarCount.textContent = totalRatingCount.star1;
+        twoStarCount.textContent = totalRatingCount.star2;
+        threeStarCount.textContent = totalRatingCount.star3;
+        fourStarCount.textContent = totalRatingCount.star4;
+        fiveStarCount.textContent = totalRatingCount.star5;
     }
 
     let totalRatingCount = {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 
     axios
-    .get("https://crudcrud.com/api/522bc9dd5dc74a748cdbe85c45ef629b/ratingDetails")
+    .get("https://crudcrud.com/api/cf0546e083e24140bee45dad9cc44cc6/ratingDetails")
     .then((response)=>{
         for(let i = 0; i<response.data.length; i++){
             displayUserOnScreen(response.data[i])
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
 
         axios
-        .post("https://crudcrud.com/api/522bc9dd5dc74a748cdbe85c45ef629b/ratingDetails", details)
+        .post("https://crudcrud.com/api/cf0546e083e24140bee45dad9cc44cc6/ratingDetails", details)
         .then((response)=>{
             displayUserOnScreen(response.data)
             const ratingVal = response.data.ratingVal
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
             ul.removeChild(listTodlt)
             axios
-            .delete(`https://crudcrud.com/api/522bc9dd5dc74a748cdbe85c45ef629b/ratingDetails/${dltId}`)
+            .delete(`https://crudcrud.com/api/cf0546e083e24140bee45dad9cc44cc6/ratingDetails/${dltId}`)
             .then((response)=> console.log(response))
             .catch((err)=> console.log(err))
 
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
             ul.removeChild(listTodlt)
             axios
-            .delete(`https://crudcrud.com/api/522bc9dd5dc74a748cdbe85c45ef629b/ratingDetails/${dltId}`)
+            .delete(`https://crudcrud.com/api/cf0546e083e24140bee45dad9cc44cc6/ratingDetails/${dltId}`)
             .then((response)=> console.log(response))
             .catch((err)=> console.log(err))
 
