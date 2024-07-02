@@ -6,9 +6,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     const category = document.getElementById('category')
     const ul = document.querySelector('.expenseUl')
 
+    const serverUrl = 'http://localhost:3000'
+
 
     axios
-    .get("https://crudcrud.com/api/093677564f724d4494b3ad2ed9d2cfcd/appointmentDetails")
+    .get("https://crudcrud.com/api/4d566b68824d4ecda899cdb5ec54b81e/appointmentDetails")
     .then((response)=>{
         for(let i=0; i<response.data.length; i++){
             displayUserOnScreen(response.data[i])
@@ -22,7 +24,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     function displayUserOnScreen(details){
         const newLi = document.createElement('li')
         newLi.dataset.itemId = details._id
-        newLi.innerHTML = `${details.amtV} - ${details.desV} - ${details.catV} <button class="dlt">Delete Expense</button>  <button class="edt">Edit Expense</button>`
+        newLi.innerHTML = `${details.amtV} - ${details.desV} - ${details.catV} <button class="dlt btn btn-danger">Delete</button>  <button class="edt btn btn-warning">Edit</button>`
         newLi.className = "list-group-item"
         
         ul.appendChild(newLi)
@@ -41,7 +43,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
 
         axios
-        .post("https://crudcrud.com/api/093677564f724d4494b3ad2ed9d2cfcd/appointmentDetails",
+        .post("https://crudcrud.com/api/4d566b68824d4ecda899cdb5ec54b81e/appointmentDetails",
             details
         )
         .then((response) => {
@@ -67,7 +69,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             const itemId = listToDlt.dataset.itemId
             ul.removeChild(listToDlt)
             axios
-            .delete(`https://crudcrud.com/api/093677564f724d4494b3ad2ed9d2cfcd/appointmentDetails/${itemId}`)
+            .delete(`https://crudcrud.com/api/4d566b68824d4ecda899cdb5ec54b81e/appointmentDetails/${itemId}`)
             .then((response)=>{
                 console.log(response)
             })
@@ -82,7 +84,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             ul.removeChild(listToDlt)
             
             axios
-            .delete(`https://crudcrud.com/api/093677564f724d4494b3ad2ed9d2cfcd/appointmentDetails/${itemId}`)
+            .delete(`https://crudcrud.com/api/4d566b68824d4ecda899cdb5ec54b81e/appointmentDetails/${itemId}`)
             .then((response)=>{
                 console.log(response)
             })
