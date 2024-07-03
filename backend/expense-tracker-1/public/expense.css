@@ -1,6 +1,14 @@
+body {
+    padding: 9px;
+}
+
 .title{
     font-size: xx-large;
     font-weight: bold;
     color: blue;
     background-color: blanchedalmond;
+}
+
+.hidden{
+    display: none;
 }
